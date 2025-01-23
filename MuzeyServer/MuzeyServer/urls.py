@@ -16,15 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Base import views
 from SearchMenu.views import menu
 from SearchResult.views import result
 from GamesList.views import game_bar, game_render
+from Base.views import register_visitor
+
+from send_email.views import send_email
+
 urlpatterns = [
+    path("email/", send_email,  name='email'),
     path('admin/', admin.site.urls),
-    path('', views.base_plate),
     path('search/', menu),
     path('games/', game_bar),
     path('game/<int:id>', game_render),
-    path('result/<int:ids>/', result, name='result')
+    path('', register_visitor, name='register_visitor'),
+    path('result/<int:ids>/', result, name='result'),
 ]
