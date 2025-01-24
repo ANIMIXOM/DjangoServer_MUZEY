@@ -8,3 +8,7 @@ def game_bar(request):
 
 def game_render(request, id):
     return render(request, f"game_{id}.html")
+
+
+def video_render(request, id):
+    return render(request, f"video_r{id}.html") #video_r3 заменить на video_r{id}

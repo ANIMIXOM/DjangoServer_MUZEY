@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from SearchMenu.views import menu
 from SearchResult.views import result
-from GamesList.views import game_bar, game_render
+from GamesList.views import game_bar, game_render, video_render
 from Base.views import register_visitor
 
 from send_email.views import send_email
@@ -31,4 +31,5 @@ urlpatterns = [
     path('game/<int:id>', game_render),
     path('', register_visitor, name='register_visitor'),
     path('result/<int:ids>/', result, name='result'),
+    path('video/<int:id>', video_render),
 ]
