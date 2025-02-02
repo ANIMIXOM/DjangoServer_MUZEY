@@ -8,25 +8,22 @@
     <style>
         .container {
             display: flex;
-            justify-content: center; /* Центрирует по горизонтали */
-            align-items: center; /* Центрирует по вертикали */
-            height: 100vh; /* Задает высоту контейнера */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="col-md-4">
-            <h2 class="text-center">Регистрация посетителя</h2>
-            <form method="POST">
+            <h2 class="text-center">Регистрация посетителя</h2><br>
+            <form method="post">
                 {% csrf_token %}
-                <div class="mb-3">
-                    {{ form.Name }}
-                </div>
-                <div class="mb-3">
-                    {{ form.Surname }}
-                </div>
-                <button class="btn btn-success w-100" type="submit">Зарегистрировать</button>
+                {{form.first_name }}<br>
+                {{form.last_name}}<br>
+                <button type="submit" class="btn btn-success w-100">Зарегистрироваться</button>
+                <a href="/login">Войти</a>
             </form>
         </div>
     </div>

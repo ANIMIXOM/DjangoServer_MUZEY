@@ -1,3 +1,3 @@
 from django.contrib import admin
-from .models import Visitor
-admin.site.register(Visitor)
+from .models import CustomUser
+admin.site.register(CustomUser)

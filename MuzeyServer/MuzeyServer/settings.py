@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
 
@@ -134,7 +134,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.yandex.com'
-EMAIL_PORT = 587  # Порт для TLS
-EMAIL_USE_TLS = True  # Используем TLS
-EMAIL_HOST_USER = 'nikijakushev@yandex.ru'  # Ваш адрес электронной почты
-EMAIL_HOST_PASSWORD = 'pmqeuxxybcvygoxm'    # Ваш пароль приложения (ключ безопасности)
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'nikijakushev@yandex.ru'
+EMAIL_HOST_PASSWORD = 'pmqeuxxybcvygoxm'

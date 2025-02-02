@@ -7,9 +7,9 @@
     <style>
         .container {
             display: flex;
-            justify-content: center; /* Центрирует по горизонтали */
-            align-items: center; /* Центрирует по вертикали */
-            height: 100vh; /* Задает высоту контейнера */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
     </style>
 </head>
@@ -19,7 +19,10 @@
             <form method="post" action="{% url 'email' %}">
                 {% csrf_token %}
                 <h2 class="text-center">Отправить грамоту</h2><br>
+                <input type="text" class="form-control" placeholder="Имя"  name="name"  required><br>
+                <input type="text" class="form-control" placeholder="Фамилия"  name="surname"  required><br>
                 <input type="email" class="form-control" placeholder="email"  name="email"  required><br>
+
                 <button class="btn btn-success w-100" type="submit">Отправить</button>
             </form>
         </div>

@@ -19,7 +19,7 @@ from django.urls import path
 from SearchMenu.views import menu
 from SearchResult.views import result
 from GamesList.views import game_bar, game_render, video_render
-from Base.views import register_visitor
+from Base.views import register_visitor, home, logout_view, login_view
 
 from send_email.views import send_email
 
@@ -29,7 +29,10 @@ urlpatterns = [
     path('search/', menu),
     path('games/', game_bar),
     path('game/<int:id>', game_render),
-    path('', register_visitor, name='register_visitor'),
+    path('register/', register_visitor, name='register'),
+    path('', home, name='home'),
     path('result/<int:ids>/', result, name='result'),
     path('video/<int:id>', video_render),
+    path('logout/', logout_view, name="logout"),
+    path('login/', login_view, name='login'),
 ]

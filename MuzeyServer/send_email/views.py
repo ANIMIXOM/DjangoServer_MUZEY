@@ -1,10 +1,10 @@
 import os
 from django.core.mail import EmailMultiAlternatives
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.conf import settings
 from PIL import Image, ImageDraw, ImageFont
-from Base.models import Visitor
+
 
 def send_email(request):
     if request.method == 'POST':
@@ -12,41 +12,47 @@ def send_email(request):
         subject = 'Грамота.'
         message = "Поздравляем!!!"
         from_email = 'nikijakushev@yandex.ru'
+        name = request.POST.get('name')
+        surname = request.POST.get('surname')
 
         email = EmailMultiAlternatives(subject, message, from_email, [recipient_email])
-
         email.attach_alternative(message, "text/html")
 
         image_path = 'static/gramota.png'
-        image = Image.open(image_path)
-        draw = ImageDraw.Draw(image)
+        output_path = os.path.join(settings.MEDIA_ROOT, 'output_image.png')
 
-        font = ImageFont.truetype('static/Majestic Regular.ttf', 100)
+        try:
+            image = Image.open(image_path)
+            draw = ImageDraw.Draw(image)
+            font = ImageFont.truetype('static/Majestic Regular.ttf', 100)
+        except Exception as e:
+            return HttpResponse(f"Ошибка при работе с изображением: {e}", status=500)
 
-        first_user = Visitor.objects.last()
-
-        if first_user:
-            first_name = first_user.Name
-            last_name = first_user.Surname
-        else:
-            first_name = last_name = None
-        text = f"{first_name} {last_name}"
+        text = f"{name} {surname}"
         text_color = (0, 0, 0)
         text_position = (500, 1000)
-        draw.text(text_position, text, fill=text_color, font=font)
 
-        output_path = os.path.join(settings.MEDIA_ROOT, 'static/output_image.png')
-        image.save(output_path)
+        try:
+            draw.text(text_position, text, fill=text_color, font=font)
+        except Exception as e:
+            return HttpResponse(f"Ошибка при добавлении текста к изображению: {e}", status=500)
 
-        if os.path.exists(output_path):
-            print("Изображение успешно создано:", output_path)
+        try:
+            image.save(output_path)
             with open(output_path, 'rb') as img:
                 email.attach('image1.png', img.read(), 'image/png')
-        else:
-            print("Ошибка: изображение не создано.")
+        except Exception as e:
+            return HttpResponse(f"Ошибка при сохранении и прикреплении изображения: {e}", status=500)
 
-        email.send()
-        os.remove('static/output_image.png')
-        return HttpResponse('Письмо с изображением отправлено!')
+        try:
+            email.send()
+        except Exception as e:
+            return HttpResponse(f"Ошибка при отправке письма: {e}", status=500)
+        finally:
+            try:
+                os.remove(output_path)
+            except FileNotFoundError:
+                pass
 
+        return redirect('/')
     return render(request, 'send_email.html')

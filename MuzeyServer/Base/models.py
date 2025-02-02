@@ -1,11 +1,22 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 
-class Visitor(models.Model):
-    UID = models.CharField(blank=False, max_length=10, default='')
-    Name = models.CharField(blank=False, max_length=250, default='')
-    Surname = models.CharField(blank=False, max_length=250, default='')
-    Points = models.IntegerField(blank=False, default=0)
+class CustomUser(AbstractUser):
+    groups = models.ManyToManyField(
+        'auth.Group',
+        verbose_name='groups',
+        blank=True,
+        help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.',
+        related_name="custom_user_set",
+        related_query_name="custom_user",
+    )
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        verbose_name='user permissions',
+        blank=True,
+        help_text='Specific permissions for this user.',
+        related_name="custom_user_perm_set",
+        related_query_name="custom_user_perm",
+    )
 
-    def __str__(self):
-        return self.Name
