@@ -16,12 +16,34 @@
         .logout-message-container {
           position: fixed;
           top: 10px;
-          left: 50%; /* Center horizontally */
-          transform: translateX(-50%); /* Center horizontally */
-          z-index: 1001; /* Ensure it's above other elements */
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 1001;
           width: auto;
           min-width: 200px;
         }
+        .keyboard {
+            display: grid;
+            grid-template-columns: repeat(11, 1fr); /* Changed: 11 Columns */
+            gap: 5px;
+            margin-top: 10px;
+        }
+        .keyboard-button {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            background-color: #f0f0f0;
+        }
+        .keyboard-button:hover {
+            background-color: #ddd;
+        }
+        .keyboard-button.delete {
+            background-color: #fdd;  /* Distinct color for delete */
+            grid-column: 11 / span 1;  /* Ensure it's in the last column */
+        }
+
     </style>
 </head>
 <body>
@@ -41,9 +63,49 @@
             <form method="post">
                 {% csrf_token %}
                 {{ form.username }}<br>
+                <div id="keyboard" class="keyboard">
+                    <!-- Keyboard buttons will be added here by JavaScript -->
+                </div>
+                <br>
+                <br>
+                <br>
                 <button type="submit" class="btn btn-primary w-100" >Войти</button>
             </form>
         </div>
     </div>
+
+    <script>
+        const keyboardDiv = document.getElementById('keyboard');
+        const usernameInput = document.getElementById('id_username'); // Correct way to get input
+
+        const characters = [
+            '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+            'delete'  // Keep delete in the array
+        ];
+
+
+        characters.forEach(char => {
+            const button = document.createElement('div');
+            button.classList.add('keyboard-button');
+
+            if (char === 'delete') {
+                button.textContent = 'Backspace';  // Unicode Backspace Symbol
+                button.classList.add('delete');
+                button.addEventListener('click', () => {
+                    usernameInput.value = usernameInput.value.slice(0, -1); // Remove last char
+                });
+            } else {
+                button.textContent = char;
+                button.addEventListener('click', () => {
+                    usernameInput.value += char;
+                });
+            }
+            keyboardDiv.appendChild(button);
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
 </body>
 </html>
