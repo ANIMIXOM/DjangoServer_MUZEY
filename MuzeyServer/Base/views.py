@@ -42,6 +42,8 @@ def login_view(request):
         if form.is_valid():
             user = form.cleaned_data.get('user')
             if user:
+                if user.is_superuser:
+                    return redirect('/admin')
                 login(request, user)
                 next_url = request.GET.get('next', '/')
                 return redirect(next_url)
