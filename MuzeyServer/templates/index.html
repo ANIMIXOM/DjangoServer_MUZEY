@@ -23,8 +23,29 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Brygada+1918:wght@400;700&display=swap"></noscript>
   <link rel="preload" as="style" href="{% static 'assets/mobirise/css/mbr-additional.css' %}">
   <link rel="stylesheet" href="{% static 'assets/mobirise/css/mbr-additional.css' %}" type="text/css">
+  <style>
+        .logout-message-container {
+          position: fixed;
+          top: 10px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 1001;
+          width: auto;
+          min-width: 200px;
+        }
+  </style>
 </head>
 <body>
+  {% if logout_message %}
+        <div class="logout-message-container">
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                {% csrf_token %}<br>
+                {{ logout_message }}<br>
+                {{logi}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+  {% endif %}
   <section data-bs-version="5.1" class="menu menu2 cid-unvwihuFH9" once="menu" id="menu-5-unvwihuFH9">
     <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
       <div class="container">

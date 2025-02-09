@@ -47,16 +47,6 @@
     </style>
 </head>
 <body>
-    {% if logout_message %}
-        <div class="logout-message-container">
-            <div class="alert alert-info alert-dismissible fade show" role="alert">
-                {% csrf_token %}
-                {{ logout_message }}<br>
-                {{logi}}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        </div>
-    {% endif %}
     <div class="container">
         <div class="col-md-4">
             <h2 class="text-center">Вход</h2><br>

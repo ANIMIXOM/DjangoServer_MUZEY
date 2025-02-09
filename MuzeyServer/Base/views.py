@@ -13,8 +13,11 @@ def register_visitor(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            next_url = request.GET.get('next', '/')
-            return redirect(next_url)
+            logi = login_view(request)
+            return render(request, 'index.html',
+                          {"form": form,
+                           'logout_message': f"Ваш код: {user.username}. Запомните или запишите.",
+                           "login": logi})
     else:
         form = RegistrationForm()
     return render(request, 'register_visitor.html', {'form': form})
@@ -26,13 +29,7 @@ def home(request):
 
 
 def logout_view(request):
-    user = request.user
     logout(request)
-    form = LoginForm(request.POST)
-    logi = login_view(request)
-    if user.is_authenticated:
-        return render(request, 'login.html',
-                      {"form": form, 'logout_message': f"Ваш код: {user.username}. Вы вышли из системы", "login": logi})
     return redirect('home')
 
 
