@@ -23,7 +23,6 @@ def register_visitor(request):
     return render(request, 'register_visitor.html', {'form': form})
 
 
-@login_required(login_url='/login/')
 def home(request):
     return render(request, 'index.html')
 
