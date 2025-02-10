@@ -26,7 +26,7 @@ from send_email.views import send_email
 urlpatterns = [
     path("email/", send_email,  name='email'),
     path('admin/', admin.site.urls),
-    path('search/', menu),
+    path('search/<str:name>/', menu),
     path('games/', game_bar),
     path('game/<int:id>', game_render),
     path('register/', register_visitor, name='register'),

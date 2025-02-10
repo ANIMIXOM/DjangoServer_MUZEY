@@ -1,9 +1,25 @@
 from django.db import models
 
+CHOICES_PREDPRIYATIYA = [
+    ('LTZ', 'ЛТЗ'),
+    ('Mashzavod', 'Машзавод'),
+    ('Agregatny_zavod', 'Агрегатный завод'),
+    ('HleboKombinat', 'Хлебокомбинат'),
+    ('Ludinovokabel', 'Людиновокабель'),
+    ('Shveynaya_fabrika', 'Швейная фабрика'),
+    ('OEZ', 'ОЭЗ'),
+    ("other", 'Другое'),
+    ("SCHZ", 'СЧЗ'),
+]
 class Person(models.Model):
-    full_name = models.CharField(max_length=255)
-    years_of_life = models.CharField(max_length=50, blank=True, null=True)  # позволяет пустые значения
-    biography = models.TextField(blank=True) # позволяет пустые значения
+    full_name = models.CharField(max_length=255, verbose_name="Полное ФИО")
+    nazvanie = models.CharField(
+        max_length=50,
+        choices=CHOICES_PREDPRIYATIYA,
+        verbose_name="Название предприятия",
+        unique=True  # Добавил unique, чтобы названия не повторялись. Уберите, если нужно.
+    )
+    biography = models.TextField(blank=True, verbose_name="Биография/Информация") # позволяет пустые значения
     image1 = models.ImageField(blank=True, upload_to='static/assets/images')
     image2 = models.ImageField(blank=True, upload_to='static/assets/images')
     image3 = models.ImageField(blank=True, upload_to='static/assets/images')

@@ -23,6 +23,9 @@
   <link rel="preload" as="style" href="{% static 'assets/mobirise/css/mbr-additional.css' %}">
   <link rel="stylesheet" href="{% static 'assets/mobirise/css/mbr-additional.css' %}" type="text/css">
 </head>
+
+
+
 <body>
 
   <section data-bs-version="5.1" class="menu menu2 cid-unvwihuFH9" once="menu" id="menu02-f">
@@ -50,7 +53,7 @@
               <a class="nav-link link text-black text-primary display-4" href="/games">Виртуальный Тур</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link text-black text-primary display-4" href="page2.html" aria-expanded="false">Память Города</a>
+              <a class="nav-link link text-black text-primary display-4" href="/search/-" aria-expanded="false">Память Города</a>
             </li>
           </ul>
 
@@ -83,6 +86,43 @@
       <div class="row justify-content-center">
         <div class="counter-container col-md-12 col-lg-8">
           <div class="mbr-text mbr-fonts-style display-7">
+            <a>Предприятия:</a>
+            <br>
+            <a href="/search/ltz">- ЛТЗ</a>
+            <br>
+            <a href="/search/shz">- СЧЗ</a>
+            <br>
+            <a href="/search/mas">- Машзавод</a>
+            <br>
+            <a href="/search/agz">- Агрегатный завод</a>
+            <br>
+            <a href="/search/xlb">- Хлебокомбинат</a>
+            <br>
+            <a href="/search/ldk">- Людиновокабель</a>
+            <br>
+            <a href="/search/shv">- Швейная фабрика</a>
+            <br>
+            <a href="/search/oez">- ОЭЗ</a>
+            <br>
+            <a id="basepb">Если предприятия, на котором работает(-л) работник нет, то попробуйте посмотреть ниже.</a>
+            <a id="basepb2">Там представлен список всех занесённых работников предприятий.</a>
+            <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      if (window.location.pathname !== "/search/-/") {
+        let element1 = document.getElementById("basepb");
+        let element2 = document.getElementById("basepb2");
+
+        if (element1) {
+          element1.style.display = "none"; // Скрыть ссылку 1
+        }
+
+        if (element2) {
+          element2.style.display = "none"; // Скрыть ссылку 2
+        }
+      }
+    });
+  </script>
+            <br><br><br>
             <ul>
               {%for id, name in persons.items%}
               <li><a href="/result/{{id}}">{{name}}</a></li>
