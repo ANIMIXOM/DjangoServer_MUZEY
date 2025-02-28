@@ -1,1 +1,9 @@
 /.venv/
+/MuzeyServer/static/video/
+/MuzeyServer/static/agregatka/
+/MuzeyServer/static/agroinv/
+/MuzeyServer/static/game_xlebComb/
+/MuzeyServer/static/game_schz/
+/MuzeyServer/static/kabel/
+/MuzeyServer/static/ltz/
+/MuzeyServer/static/mach/
