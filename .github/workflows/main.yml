@@ -4,7 +4,7 @@ on:
   workflow_dispatch
 
 env:
-  SERVER_HOST: http://81.200.158.36
+  SERVER_HOST: 81.200.158.36
   SERVER_USER: museum
   SERVER_PATH: /home/museum/DjangoServer
 
