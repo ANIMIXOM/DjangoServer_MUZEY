@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: MuzeyServer
+    expose:
+      - "8000"
+    container_name: museum_app
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./MuzeyServer/static:/app/static
+    depends_on:
+      - web
+    container_name: museum_nginx
