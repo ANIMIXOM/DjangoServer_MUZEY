@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      - main
+      - master
 
 env:
   SERVER_HOST: 81.200.158.36
