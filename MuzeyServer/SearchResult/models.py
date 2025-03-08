@@ -13,6 +13,7 @@ CHOICES_PREDPRIYATIYA = [
 ]
 class Person(models.Model):
     full_name = models.CharField(max_length=255, verbose_name="Полное ФИО")
+    years_of_life = models.TextField(blank=True)
     nazvanie = models.CharField(
         max_length=50,
         choices=CHOICES_PREDPRIYATIYA,
