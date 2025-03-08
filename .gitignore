@@ -8,3 +8,4 @@
 /MuzeyServer/static/ltz/
 /MuzeyServer/static/mach/
 /.idea/
+/MuzeyServer/db.sqlite3

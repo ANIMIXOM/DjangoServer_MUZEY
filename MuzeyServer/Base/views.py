@@ -57,19 +57,11 @@ def login_view(request):
 
 @login_required
 def add_score(request):
-    if request.method == 'POST':
+    if request.method == 'GET':
         try:
-            data = json.loads(request.body.decode('utf-8'))
-            action = data.get('action')
-
-            if action == 'add_point':
-                game_result, created = GameResult.objects.get_or_create(user=request.user)
-                game_result.score += 1
-                game_result.save()
-                return JsonResponse({'status': 'success', 'message': 'Очко добавлено'})
-            else:
-                return JsonResponse({'status': 'error', 'message': 'Недопустимое действие'}, status=400)
-        except Exception as e:
-            return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
-    else:
-        return JsonResponse({'status': 'error', 'message': 'Только POST запросы разрешены'}, status=405)
+            game_result, created = GameResult.objects.get_or_create(user=request.user)
+            game_result.score += 1
+            game_result.save()
+            return redirect("/")
+        except:
+            return HttpResponse("Ошибка /// перейдите на главную страницу")
