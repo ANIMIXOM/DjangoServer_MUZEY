@@ -56,7 +56,7 @@ def login_view(request):
 
 
 @login_required
-def add_score(request):
+def add_score(request, id):
     if request.method == 'GET':
         try:
             game_result, created = GameResult.objects.get_or_create(user=request.user)
