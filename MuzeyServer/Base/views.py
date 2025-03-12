@@ -62,6 +62,6 @@ def add_score(request):
             game_result, created = GameResult.objects.get_or_create(user=request.user)
             game_result.score += 1
             game_result.save()
-            return redirect("/")
+            return redirect("/games/")
         except:
             return HttpResponse("Ошибка /// перейдите на главную страницу")

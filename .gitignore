@@ -9,3 +9,4 @@
 /MuzeyServer/static/mach/
 /.idea/
 /MuzeyServer/db.sqlite3
+/MuzeyServer/static/video/
