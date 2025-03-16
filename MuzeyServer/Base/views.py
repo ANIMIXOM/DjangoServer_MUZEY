@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from Base.forms import RegistrationForm, LoginForm
-from Base.models import GameResult, PlayerProfile
+from Base.models import GameResult
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
