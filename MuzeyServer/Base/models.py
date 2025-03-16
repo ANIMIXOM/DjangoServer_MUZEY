@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings  # Импортируем settings
 
+
 class CustomUser(AbstractUser):
     groups = models.ManyToManyField(
         'auth.Group',
@@ -20,6 +21,7 @@ class CustomUser(AbstractUser):
         related_query_name="custom_user_perm",
     )
 
+
 class GameResult(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='game_results')
     score = models.IntegerField(default=0)
@@ -27,6 +29,7 @@ class GameResult(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.score} - {self.date}"
+
 
 class PlayerProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile')

@@ -34,6 +34,6 @@ urlpatterns = [
     path('video/<int:id>', video_render),
     path('logout/', logout_view, name="logout"),
     path('login/', login_view, name='login'),
-    path('add_score/', add_score, name='add_score'),
+    path('add_score/<int:id>', add_score, name='add_score'),
 
 ]
