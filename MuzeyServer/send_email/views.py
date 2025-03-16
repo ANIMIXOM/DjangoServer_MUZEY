@@ -62,7 +62,7 @@ def send_email(request):
     else:
         try:
             user_id = request.user.id
-            responce = GameResult.objects.filter(id=user_id)
+            responce = GameResult.objects.filter(user_id=user_id)
             responce = responce[0]
             if responce.score >= 5:
                 return render(request, 'send_email.html', context={"user": {"name": request.user.first_name

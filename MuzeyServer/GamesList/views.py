@@ -8,7 +8,7 @@ from Base.models import GameResult
 def game_bar(request):
     f = False
     user_id = request.user.id
-    responce = GameResult.objects.filter(id=user_id)
+    responce = GameResult.objects.filter(user_id=user_id)
     responce = responce[0]
     if responce.score >= 5:
         f = True
