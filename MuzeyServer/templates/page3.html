@@ -2,26 +2,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- Site made with Mobirise Website Builder v5.9.18, https://mobirise.com -->
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v5.9.18, mobirise.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="{% static 'assets/images/j0pmthlppoq-206x205.jpeg' %}" type="image/x-icon">
-  <meta name="description" content="">
+    <!-- Site made with Mobirise Website Builder v5.9.18, https://mobirise.com -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v5.9.18, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="{% static 'assets/images/j0pmthlppoq-206x205.jpeg' %}" type="image/x-icon">
+    <meta name="description" content="">
 
-  <title>Game Bar</title>
-  <link rel="stylesheet" href="{% static 'assets/web/assets/mobirise-icons2/mobirise2.css' %}">
-  <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
-  <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap-grid.min.css' %}">
-  <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap-reboot.min.css' %}">
-  <link rel="stylesheet" href="{% static 'assets/dropdown/css/style.css' %}">
-  <link rel="stylesheet" href="{% static 'assets/theme/css/style.css' %}">
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Brygada+1918:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Brygada+1918:wght@400;700&display=swap"></noscript>
-  <link rel="preload" as="style" href="{% static 'assets/mobirise/css/mbr-additional.css' %}">
-  <link rel="stylesheet" href="{% static 'assets/mobirise/css/mbr-additional.css' %}" type="text/css">
-  <style>
+    <title>Game Bar</title>
+    <link rel="stylesheet" href="{% static 'assets/web/assets/mobirise-icons2/mobirise2.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap-grid.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap-reboot.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/dropdown/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/theme/css/style.css' %}">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Brygada+1918:wght@400;700&display=swap"
+          as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Brygada+1918:wght@400;700&display=swap">
+    </noscript>
+    <link rel="preload" as="style" href="{% static 'assets/mobirise/css/mbr-additional.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/mobirise/css/mbr-additional.css' %}" type="text/css">
+    <style>
         .popup {
             display: none;
             position: fixed;
@@ -53,279 +56,316 @@
             border: none;
             cursor: pointer;
         }
-  </style>
+    </style>
 </head>
 <body>
-    {% if f %}
-    <button onclick="openPopup()">Открыть выбор</button>
-
-    <div class="popup-overlay" id="overlay"></div>
-    <div class="popup" id="popup">
-        <h2>Выберите вариант</h2>
-        <a href="{% url 'option1' %}" class="popup-button">Вариант 1</a>
-        <button class="popup-button" onclick="openPlayerCodeWindow()">Вариант 2 (Код Игрока)</button>
-    </div>
-
-    <script>
-        function openPopup() {
-            document.getElementById('popup').style.display = 'block';
-            document.getElementById('overlay').style.display = 'block';
-        }
-
-        function closePopup() {
-            document.getElementById('popup').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
-        }
-
-        document.getElementById('overlay').addEventListener('click', closePopup);
-
-        function openPlayerCodeWindow() {
-            const playerCode = "{{ player_code }}"; // Получаем код игрока из контекста Django
-            if (!playerCode) {
-                alert("Код игрока не доступен."); // Или загрузите через AJAX
-                return;
-            }
-
-            const newWindow = window.open("", "_blank", "width=400,height=300");
-            if (newWindow) {
-                newWindow.document.write(`
-                    <!DOCTYPE html>
-                    <html>
-                    <head>
-                        <title>Код Игрока</title>
-                    </head>
-                    <body>
-                        <h1>Код Игрока</h1>
-                        <p>${playerCode}</p>
-                    </body>
-                    </html>
-                `);
-                newWindow.document.close();
-            } else {
-                alert("Всплывающие окна заблокированы. Пожалуйста, разрешите их для этого сайта.");
-            }
-        }
-    </script>
-    {% endif %}
-  <section data-bs-version="5.1" class="menu menu2 cid-unvwihuFH9" once="menu" id="menu02-p">
+<section data-bs-version="5.1" class="menu menu2 cid-unvwihuFH9" once="menu" id="menu02-p">
     <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-      <div class="container">
-        <div class="navbar-brand">
+        <div class="container">
+            <div class="navbar-brand">
           <span class="navbar-logo">
             <a href="/">
-              <img src="{% static 'assets/images/j0pmthlppoq-206x205.jpeg' %}" alt="Mobirise Website Builder" style="height: 4.3rem;">
+              <img src="{% static 'assets/images/j0pmthlppoq-206x205.jpeg' %}" alt="Mobirise Website Builder"
+                   style="height: 4.3rem;">
             </a>
           </span>
-          <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-4" href="/">Музей Комсомольской Славы</a></span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-4" href="/">Музей Комсомольской Славы</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse"
+                    data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+                    <li class="nav-item">
+                        <a class="nav-link link text-black text-primary display-4" href="/games">Виртуальный Тур</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link text-black text-primary display-4" href="/search/-"
+                           aria-expanded="false">Память Города</a>
+                    </li>
+                </ul>
+                <div class="navbar-buttons mbr-section-btn">
+                    <a class="btn btn-primary display-4" href="/games">Начать Путешествие</a>
+                </div>
+                <div class="navbar-buttons mbr-section-btn">
+                    <a class="btn btn-primary display-4" href="/logout">Выйти</a>
+                </div>
+            </div>
         </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
-            <li class="nav-item">
-              <a class="nav-link link text-black text-primary display-4" href="/games">Виртуальный Тур</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link link text-black text-primary display-4" href="/search/-" aria-expanded="false">Память Города</a>
-            </li>
-          </ul>
-          <div class="navbar-buttons mbr-section-btn">
-            <a class="btn btn-primary display-4" href="/games">Начать Путешествие</a>
-          </div>
-          <div class="navbar-buttons mbr-section-btn">
-            <a class="btn btn-primary display-4" href="/logout">Выйти</a>
-          </div>
-        </div>
-      </div>
     </nav>
-  </section>
-
-  <section data-bs-version="5.1" class="header12 cid-uwwS1xNIkW" id="header12-r">
+</section
+<section data-bs-version="5.1" class="header12 cid-uwwS1xNIkW" id="header12-r">
     <div class="text-center container">
-      <div class="row mb-4 justify-content-center">
-        <div class="col-12 col-md-8">
-          <img class="w-100" src="{% static 'assets/images/efd44a3e44136fa3-w820-h440-1230x660.jpg' %}" alt="Mobirise Website Builder">
+        <div class="row mb-4 justify-content-center">
+            <div class="col-12 col-md-8">
+                <img class="w-100" src="{% static 'assets/images/efd44a3e44136fa3-w820-h440-1230x660.jpg' %}"
+                     alt="Mobirise Website Builder">
+            </div>
         </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-md-12 content-head">
-          <h1 class="mbr-section-title mbr-fonts-style mb-4 display-1"><strong>Вы попали в Виртуальный Тур</strong></h1>
-          <p class="mbr-text mbr-fonts-style mb-4 display-7">Выберите предприятие, которое хотите посетить.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section data-bs-version="5.1" class="features017 mbr-embla cid-uwwS4zZEGS" id="features017-s">
-    <div class="position-relative">
-      <div class="container-fluid">
         <div class="row justify-content-center">
-          <div class="col-12 content-head">
-            <div class="mbr-section-head mb-5">
-              <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
-                <strong>Предприятия</strong>
-              </h4>
-              <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-7">Выберите предприятие для посещения</h5>
+            <div class="col-md-12 content-head">
+                <h1 class="mbr-section-title mbr-fonts-style mb-4 display-1"><strong>Вы попали в Виртуальный
+                    Тур</strong></h1>
+                <p class="mbr-text mbr-fonts-style mb-4 display-7">Выберите предприятие, которое хотите посетить.</p>
             </div>
-          </div>
         </div>
-      </div>
-
-      <div class="embla" data-skip-snaps="true" data-align="center" data-contain-scroll="trimSnaps" data-auto-play-interval="5" data-draggable="true">
-        <div class="embla__viewport container-fluid">
-          <div class="embla__container">
-            <div class="embla__slide slider-image item active" style="margin-left: 1rem; margin-right: 1rem;">
-              <div class="slide-content">
-                <div class="item-img">
-                  <div class="item-wrapper">
-                    <img src="{% static 'assets/images/-600x400.jpg' %}" alt="Mobirise Website Builder" title="" data-slide-to="0" data-bs-slide-to="0">
-                  </div>
-                </div>
-                <div class="item-content">
-                  <h5 class="item-title mbr-fonts-style display-5"><strong>ЛТЗ</strong></h5>
-                  <p class="mbr-text mbr-fonts-style mt-3 display-7"></p>
-                </div>
-                <div class="mbr-section-btn item-footer mt-2"><a href="/game/1" class="btn item-btn btn-primary display-7">Игра</a></div>
-                                <div class="mbr-section-btn item-footer mt-2"><a href="/video/1" class="btn item-btn btn-primary display-7">Видео</a></div>
-              </div>
-            </div>
-            <div class="embla__slide slider-image item active" style="margin-left: 1rem; margin-right: 1rem;">
-              <div class="slide-content">
-                <div class="item-img">
-                  <div class="item-wrapper">
-                    <img src="{% static 'assets/images/mtso-600x306.jpg' %}" alt="Mobirise Website Builder" title="" data-slide-to="1" data-bs-slide-to="1">
-                  </div>
-                </div>
-                <div class="item-content">
-                  <h5 class="item-title mbr-fonts-style display-5"><strong>РемПутьМаш</strong></h5>
-                  <p class="mbr-text mbr-fonts-style mt-3 display-7"></p>
-                </div>
-                <div class="mbr-section-btn item-footer mt-2"><a href="/game/2" class="btn item-btn btn-primary display-7">Игра</a></div>
-                                <div class="mbr-section-btn item-footer mt-2"><a href="/video/2" class="btn item-btn btn-primary display-7">Видео</a></div>
-              </div>
-            </div>
-            <div class="embla__slide slider-image item active" style="margin-left: 1rem; margin-right: 1rem;">
-              <div class="slide-content">
-                <div class="item-img">
-                  <div class="item-wrapper">
-                    <img src="{% static 'assets/images/agregatn.jpg' %}" alt="Mobirise Website Builder" title="" data-slide-to="1" data-bs-slide-to="1">
-                  </div>
-                </div>
-                <div class="item-content">
-                  <h5 class="item-title mbr-fonts-style display-5"><strong>Агрегатный Завод</strong></h5>
-                  <p class="mbr-text mbr-fonts-style mt-3 display-7"></p>
-                </div>
-                <div class="mbr-section-btn item-footer mt-2"><a href="/game/6" class="btn item-btn btn-primary display-7">Игра</a></div>
-                                <div class="mbr-section-btn item-footer mt-2"><a href="/video/6" class="btn item-btn btn-primary display-7">Видео</a></div>
-              </div>
-            </div>
-            <div class="embla__slide slider-image item active" style="margin-left: 1rem; margin-right: 1rem;">
-              <div class="slide-content">
-                <div class="item-img">
-                  <div class="item-wrapper">
-                    <img src="{% static 'assets/images/ludinovocable-590x370.jpg' %}" alt="Mobirise Website Builder" title="" data-slide-to="2" data-bs-slide-to="2">
-                  </div>
-                </div>
-                <div class="item-content">
-                  <h5 class="item-title mbr-fonts-style display-5"><strong>Людиновокабель</strong></h5>
-                  <p class="mbr-text mbr-fonts-style mt-3 display-7"></p>
-                </div>
-                <div class="mbr-section-btn item-footer mt-2"><a href="/game/3" class="btn item-btn btn-primary display-7">Игра</a></div>
-                <div class="mbr-section-btn item-footer mt-2"><a href="/video/3" class="btn item-btn btn-primary display-7" >Видео</a></div>
-              </div>
-            </div>
-            <div class="embla__slide slider-image item active" style="margin-left: 1rem; margin-right: 1rem;">
-              <div class="slide-content">
-                <div class="item-img">
-                  <div class="item-wrapper">
-                    <img src="{% static 'assets/images/orig-590x332.jpg' %}" alt="Mobirise Website Builder" title="" data-slide-to="3" data-bs-slide-to="3">
-                  </div>
-                </div>
-                <div class="item-content">
-                  <h5 class="item-title mbr-fonts-style display-5"><strong>Хлебокомбинат</strong></h5>
-                  <p class="mbr-text mbr-fonts-style mt-3 display-7"></p>
-                </div>
-                <div class="mbr-section-btn item-footer mt-2"><a href="/game/5" class="btn item-btn btn-primary display-7">Игра</a></div>
-                <div class="mbr-section-btn item-footer mt-2"><a href="/video/5" class="btn item-btn btn-primary display-7">Видео</a></div>
-              </div>
-            </div>
-            <div class="embla__slide slider-image item active" style="margin-left: 1rem; margin-right: 1rem;">
-              <div class="slide-content">
-                <div class="item-img">
-                  <div class="item-wrapper">
-                    <img src="{% static 'assets/images/e7464d6f8dd69b2c299b82b05e933784-590x393.jpg' %}" alt="Mobirise Website Builder" title="" data-slide-to="4" data-bs-slide-to="4">
-                  </div>
-                </div>
-                <div class="item-content">
-                  <h5 class="item-title mbr-fonts-style display-5"><strong>СЧЗ</strong></h5>
-                  <p class="mbr-text mbr-fonts-style mt-3 display-7"></p>
-                </div>
-                <div class="mbr-section-btn item-footer mt-2"><a href="/game/7" class="btn item-btn btn-primary display-7">Игра</a></div>
-                <div class="mbr-section-btn item-footer mt-2"><a href="/video/7" class="btn item-btn btn-primary display-7">Видео</a></div>
-              </div>
-            </div>
-            <div class="embla__slide slider-image item active" style="margin-left: 1rem; margin-right: 1rem;">
-              <div class="slide-content">
-                <div class="item-img">
-                  <div class="item-wrapper">
-                    <img src="{% static 'assets/images/agroinvest.jpg' %}" alt="Mobirise Website Builder" title="" data-slide-to="4" data-bs-slide-to="4">
-                  </div>
-                </div>
-                <div class="item-content">
-                  <h5 class="item-title mbr-fonts-style display-5"><strong>Агроинвест</strong></h5>
-                  <p class="mbr-text mbr-fonts-style mt-3 display-7"></p>
-                </div>
-                <div class="mbr-section-btn item-footer mt-2"><a href="/game/4" class="btn item-btn btn-primary display-7">Игра</a></div>
-                <div class="mbr-section-btn item-footer mt-2"><a href="/video/7" class="btn item-btn btn-primary display-7">Видео</a></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <button class="embla__button embla__button--prev">
-          <span class="mobi-mbri mobi-mbri-arrow-prev mbr-iconfont" aria-hidden="true"></span>
-          <span class="sr-only visually-hidden">Previous</span>
-        </button>
-        <button class="embla__button embla__button--next">
-          <span class="mobi-mbri mobi-mbri-arrow-next mbr-iconfont" aria-hidden="true"></span>
-          <span class="sr-only visually-hidden">Next</span>
-        </button>
-      </div>
     </div>
-  </section>
+</section>
 
-  <section data-bs-version="5.1" class="footer2 cid-unvwihzfDl" once="footers" id="footer02-q">
+<section data-bs-version="5.1" class="features017 mbr-embla cid-uwwS4zZEGS" id="features017-s">
+    <div class="position-relative">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-12 content-head">
+                    <div class="mbr-section-head mb-5">
+                        <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
+                            <strong>Предприятия</strong>
+                        </h4>
+                        <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-7">Выберите
+                            предприятие для посещения</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if f %}
+        <div class="congratulation-container">
+            <div class="congratulation-card">
+                <h1 class="display-4">Поздравляем!</h1>
+                <p class="lead">Вы успешно прошли большую часть виртуального тура!</p>
+                <hr class="my-4">
+                <p>Нажмите на кнопку ниже, чтобы получить свою грамоту.</p>
+                <a class="btn btn-custom" href="/email/" role="button">Получить грамоту</a>
+            </div>
+        </div>
+        {% endif %}
+        <style>
+            .congratulation-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 30px;
+            }
+            .congratulation-card {
+                background-color: #ffffff;
+                padding: 20px; /* Уменьшено значение отступа */
+                border-radius: 15px;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+                transition: transform 0.2s;
+            }
+            .congratulation-card h1 {
+                margin-bottom: 10px; /* Уменьшено значение отступа для заголовка */
+            }
+            .congratulation-card p {
+                margin-bottom: 5px; /* Уменьшено значение отступа для параграфов */
+            }
+            .congratulation-card:hover {
+                transform: scale(1.05);
+            }
+            .btn-custom {
+                background-color: #007bff;
+                color: white;
+                border-radius: 25px;
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+            .btn-custom:hover {
+                background-color: #0056b3;
+                color: white;
+            }
+        </style>
+        <div class="embla" data-skip-snaps="true" data-align="center" data-contain-scroll="trimSnaps"
+             data-auto-play-interval="5" data-draggable="true">
+            <div class="embla__viewport container-fluid">
+                <div class="embla__container">
+                    <div class="embla__slide slider-image item active" style="margin-left: 1rem; margin-right: 1rem;">
+                        <div class="slide-content">
+                            <div class="item-img">
+                                <div class="item-wrapper">
+                                    <img src="{% static 'assets/images/-600x400.jpg' %}" alt="Mobirise Website Builder"
+                                         title="" data-slide-to="0" data-bs-slide-to="0">
+                                </div>
+                            </div>
+                            <div class="item-content">
+                                <h5 class="item-title mbr-fonts-style display-5"><strong>ЛТЗ</strong></h5>
+                                <p class="mbr-text mbr-fonts-style mt-3 display-7"></p>
+                            </div>
+                            <div class="mbr-section-btn item-footer mt-2"><a href="/game/1"
+                                                                             class="btn item-btn btn-primary display-7">Игра</a>
+                            </div>
+                            <div class="mbr-section-btn item-footer mt-2"><a href="/video/1"
+                                                                             class="btn item-btn btn-primary display-7">Видео</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="embla__slide slider-image item active" style="margin-left: 1rem; margin-right: 1rem;">
+                        <div class="slide-content">
+                            <div class="item-img">
+                                <div class="item-wrapper">
+                                    <img src="{% static 'assets/images/mtso-600x306.jpg' %}"
+                                         alt="Mobirise Website Builder" title="" data-slide-to="1" data-bs-slide-to="1">
+                                </div>
+                            </div>
+                            <div class="item-content">
+                                <h5 class="item-title mbr-fonts-style display-5"><strong>РемПутьМаш</strong></h5>
+                                <p class="mbr-text mbr-fonts-style mt-3 display-7"></p>
+                            </div>
+                            <div class="mbr-section-btn item-footer mt-2"><a href="/game/2"
+                                                                             class="btn item-btn btn-primary display-7">Игра</a>
+                            </div>
+                            <div class="mbr-section-btn item-footer mt-2"><a href="/video/2"
+                                                                             class="btn item-btn btn-primary display-7">Видео</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="embla__slide slider-image item active" style="margin-left: 1rem; margin-right: 1rem;">
+                        <div class="slide-content">
+                            <div class="item-img">
+                                <div class="item-wrapper">
+                                    <img src="{% static 'assets/images/agregatn.jpg' %}" alt="Mobirise Website Builder"
+                                         title="" data-slide-to="1" data-bs-slide-to="1">
+                                </div>
+                            </div>
+                            <div class="item-content">
+                                <h5 class="item-title mbr-fonts-style display-5"><strong>Агрегатный Завод</strong></h5>
+                                <p class="mbr-text mbr-fonts-style mt-3 display-7"></p>
+                            </div>
+                            <div class="mbr-section-btn item-footer mt-2"><a href="/game/6"
+                                                                             class="btn item-btn btn-primary display-7">Игра</a>
+                            </div>
+                            <div class="mbr-section-btn item-footer mt-2"><a href="/video/6"
+                                                                             class="btn item-btn btn-primary display-7">Видео</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="embla__slide slider-image item active" style="margin-left: 1rem; margin-right: 1rem;">
+                        <div class="slide-content">
+                            <div class="item-img">
+                                <div class="item-wrapper">
+                                    <img src="{% static 'assets/images/ludinovocable-590x370.jpg' %}"
+                                         alt="Mobirise Website Builder" title="" data-slide-to="2" data-bs-slide-to="2">
+                                </div>
+                            </div>
+                            <div class="item-content">
+                                <h5 class="item-title mbr-fonts-style display-5"><strong>Людиновокабель</strong></h5>
+                                <p class="mbr-text mbr-fonts-style mt-3 display-7"></p>
+                            </div>
+                            <div class="mbr-section-btn item-footer mt-2"><a href="/game/3"
+                                                                             class="btn item-btn btn-primary display-7">Игра</a>
+                            </div>
+                            <div class="mbr-section-btn item-footer mt-2"><a href="/video/3"
+                                                                             class="btn item-btn btn-primary display-7">Видео</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="embla__slide slider-image item active" style="margin-left: 1rem; margin-right: 1rem;">
+                        <div class="slide-content">
+                            <div class="item-img">
+                                <div class="item-wrapper">
+                                    <img src="{% static 'assets/images/orig-590x332.jpg' %}"
+                                         alt="Mobirise Website Builder" title="" data-slide-to="3" data-bs-slide-to="3">
+                                </div>
+                            </div>
+                            <div class="item-content">
+                                <h5 class="item-title mbr-fonts-style display-5"><strong>Хлебокомбинат</strong></h5>
+                                <p class="mbr-text mbr-fonts-style mt-3 display-7"></p>
+                            </div>
+                            <div class="mbr-section-btn item-footer mt-2"><a href="/game/5"
+                                                                             class="btn item-btn btn-primary display-7">Игра</a>
+                            </div>
+                            <div class="mbr-section-btn item-footer mt-2"><a href="/video/5"
+                                                                             class="btn item-btn btn-primary display-7">Видео</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="embla__slide slider-image item active" style="margin-left: 1rem; margin-right: 1rem;">
+                        <div class="slide-content">
+                            <div class="item-img">
+                                <div class="item-wrapper">
+                                    <img src="{% static 'assets/images/e7464d6f8dd69b2c299b82b05e933784-590x393.jpg' %}"
+                                         alt="Mobirise Website Builder" title="" data-slide-to="4" data-bs-slide-to="4">
+                                </div>
+                            </div>
+                            <div class="item-content">
+                                <h5 class="item-title mbr-fonts-style display-5"><strong>СЧЗ</strong></h5>
+                                <p class="mbr-text mbr-fonts-style mt-3 display-7"></p>
+                            </div>
+                            <div class="mbr-section-btn item-footer mt-2"><a href="/game/7"
+                                                                             class="btn item-btn btn-primary display-7">Игра</a>
+                            </div>
+                            <div class="mbr-section-btn item-footer mt-2"><a href="/video/7"
+                                                                             class="btn item-btn btn-primary display-7">Видео</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="embla__slide slider-image item active" style="margin-left: 1rem; margin-right: 1rem;">
+                        <div class="slide-content">
+                            <div class="item-img">
+                                <div class="item-wrapper">
+                                    <img src="{% static 'assets/images/agroinvest.jpg' %}"
+                                         alt="Mobirise Website Builder" title="" data-slide-to="4" data-bs-slide-to="4">
+                                </div>
+                            </div>
+                            <div class="item-content">
+                                <h5 class="item-title mbr-fonts-style display-5"><strong>Агроинвест</strong></h5>
+                                <p class="mbr-text mbr-fonts-style mt-3 display-7"></p>
+                            </div>
+                            <div class="mbr-section-btn item-footer mt-2"><a href="/game/4"
+                                                                             class="btn item-btn btn-primary display-7">Игра</a>
+                            </div>
+                            <div class="mbr-section-btn item-footer mt-2"><a href="/video/7"
+                                                                             class="btn item-btn btn-primary display-7">Видео</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="embla__button embla__button--prev">
+                <span class="mobi-mbri mobi-mbri-arrow-prev mbr-iconfont" aria-hidden="true"></span>
+                <span class="sr-only visually-hidden">Previous</span>
+            </button>
+            <button class="embla__button embla__button--next">
+                <span class="mobi-mbri mobi-mbri-arrow-next mbr-iconfont" aria-hidden="true"></span>
+                <span class="sr-only visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="footer2 cid-unvwihzfDl" once="footers" id="footer02-q">
     <div class="container">
-      <div class="row">
-        <div class="col-12 col-lg-6 center mt-2 mb-3">
-          <p class="mbr-fonts-style copyright mb-0 display-7">© 2024-2025 Музей Комсомольской Славы г.Людиново. Все права защищены.</p>
+        <div class="row">
+            <div class="col-12 col-lg-6 center mt-2 mb-3">
+                <p class="mbr-fonts-style copyright mb-0 display-7">© 2024-2025 Музей Комсомольской Славы г.Людиново.
+                    Все права защищены.</p>
+            </div>
+            <div class="col-12 col-lg-6 center">
+                <div class="row-links mt-2 mb-3">
+                    <ul class="row-links-soc">
+                        <li class="row-links-soc-item mbr-fonts-style display-7"></li>
+                        <li class="row-links-soc-item mbr-fonts-style display-7"></li>
+                        <li class="row-links-soc-item mbr-fonts-style display-7"></li>
+                        <li class="row-links-soc-item mbr-fonts-style display-7"></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="col-12 col-lg-6 center">
-          <div class="row-links mt-2 mb-3">
-            <ul class="row-links-soc">
-              <li class="row-links-soc-item mbr-fonts-style display-7"></li>
-              <li class="row-links-soc-item mbr-fonts-style display-7"></li>
-              <li class="row-links-soc-item mbr-fonts-style display-7"></li>
-              <li class="row-links-soc-item mbr-fonts-style display-7"></li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <script src="{% static 'assets/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'assets/smoothscroll/smooth-scroll.js' %}"></script>
-  <script src="{% static 'assets/ytplayer/index.js' %}"></script>
-  <script src="{% static 'assets/dropdown/js/navbar-dropdown.js' %}"></script>
-  <script src="{% static 'assets/embla/embla.min.js' %}"></script>
-  <script src="{% static 'assets/embla/script.js' %}"></script>
-  <script src="{% static 'assets/theme/js/script.js' %}"></script>
+<script src="{% static 'assets/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/smoothscroll/smooth-scroll.js' %}"></script>
+<script src="{% static 'assets/ytplayer/index.js' %}"></script>
+<script src="{% static 'assets/dropdown/js/navbar-dropdown.js' %}"></script>
+<script src="{% static 'assets/embla/embla.min.js' %}"></script>
+<script src="{% static 'assets/embla/script.js' %}"></script>
+<script src="{% static 'assets/theme/js/script.js' %}"></script>
 
 </body>
 </html>

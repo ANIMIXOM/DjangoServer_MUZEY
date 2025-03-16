@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Тема письма</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         .container {
             display: flex;
@@ -11,21 +12,99 @@
             align-items: center;
             height: 100vh;
         }
+        .keyboard {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 5px;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .keyboard-button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            user-select: none;
+        }
+        .keyboard-button:hover {
+            background-color: #ddd;
+        }
+        .keyboard-button.delete {
+            background-color: #fdd;
+        }
+        .keyboard-button.capslock {
+            background-color: #aaf;
+        }
     </style>
+    <script>
+        var upscale = 0;
+
+        function appendCharacter(character) {
+            const emailInput = document.getElementById('email');
+            if (upscale) {
+                emailInput.value += character.toUpperCase();
+            } else {
+                emailInput.value += character.toLowerCase();
+            }
+        }
+
+        function deleteCharacter() {
+            const emailInput = document.getElementById('email');
+            emailInput.value = emailInput.value.slice(0, -1);
+        }
+
+        function toggleUppercase() {
+            upscale = (upscale + 1) % 2;
+        }
+
+function createKeyboard() {
+    const keyboardDiv = document.getElementById('keyboard');
+    const characters = [
+        'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p',
+        'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', '@',
+        'z', 'x', 'c', 'v', 'b', 'n', 'm', '0', '1', '2',
+        '3', '4', '5', '6', '7', '8', '9', '.', 'delete', 'capslock'
+    ];
+
+    characters.forEach(char => {
+        const button = document.createElement('div');
+        button.classList.add('keyboard-button');
+        button.textContent = char === 'delete' ? 'Удалить' : char;
+
+        if (char === 'delete') {
+            button.classList.add('delete');
+            button.addEventListener('click', deleteCharacter);
+        } else if (char === 'capslock') {
+            button.classList.add('capslock');
+            button.addEventListener('click', toggleUppercase);
+        } else {
+            button.addEventListener('click', () => appendCharacter(char));
+        }
+
+        keyboardDiv.appendChild(button);
+    });
+}
+
+
+        window.onload = createKeyboard;
+    </script>
 </head>
 <body>
-    <div class="container">
-        <div class="col-md-4">
-            <form method="post" action="{% url 'email' %}">
-                {% csrf_token %}
-                <h2 class="text-center">Отправить грамоту</h2><br>
-                <input type="text" class="form-control" placeholder="Имя"  name="name"  required><br>
-                <input type="text" class="form-control" placeholder="Фамилия"  name="surname"  required><br>
-                <input type="email" class="form-control" placeholder="email"  name="email"  required><br>
-
-                <button class="btn btn-success w-100" type="submit">Отправить</button>
-            </form>
-        </div>
+<div class="container">
+    <div class="col-md-5">
+        <form method="post" action="{% url 'email' %}">
+            {% csrf_token %}
+            <h2 class="text-center">Отправить грамоту</h2><br>
+            <input type="text" class="form-control" placeholder="Имя" name="name" value="{{user.name}}" required><br>
+            <input type="text" class="form-control" placeholder="Фамилия" name="surname" value="{{user.surname}}"
+                   required><br>
+            <input type="email" class="form-control" id="email" placeholder="email" name="email" required><br>
+            <button class="btn btn-success w-100" type="submit">Отправить</button>
+        </form>
+        <div id="keyboard" class="keyboard"></div>
     </div>
+</div>
 </body>
 </html>

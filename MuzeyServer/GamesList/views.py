@@ -1,21 +1,18 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from Base.models import GameResult
 
 
 # @login_required
 @login_required(login_url='/login/')
 def game_bar(request):
     f = False
-    user = request.user
-    player_code = user.username
-    try:
-        user_pof = user.profile
-        rating = user_pof.rating
-    except:
-        rating = 0
-    if  rating > 5:
+    user_id = request.user.id
+    responce = GameResult.objects.filter(id=user_id)
+    responce = responce[0]
+    if responce.score >= 5:
         f = True
-    return render(request, "page3.html", {'f': f, 'player_code ': player_code})
+    return render(request, "page3.html", {'f': f})
 
 
 @login_required(login_url='/login/')

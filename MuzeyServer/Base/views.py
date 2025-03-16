@@ -65,3 +65,14 @@ def add_score(request, id):
             return redirect("/games/")
         except:
             return HttpResponse("Ошибка /// перейдите на главную страницу")
+
+@login_required
+def add_score_without(request):
+    if request.method == 'GET':
+        try:
+            game_result, created = GameResult.objects.get_or_create(user=request.user)
+            game_result.score += 1
+            game_result.save()
+            return redirect("/games/")
+        except:
+            return HttpResponse("Ошибка /// перейдите на главную страницу")

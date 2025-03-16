@@ -1,11 +1,15 @@
 import os
+
+import django.contrib.auth.decorators
 from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.conf import settings
 from PIL import Image, ImageDraw, ImageFont
+from Base.models import GameResult
 
 
+@django.contrib.auth.decorators.login_required
 def send_email(request):
     if request.method == 'POST':
         recipient_email = request.POST.get('email')
@@ -55,4 +59,13 @@ def send_email(request):
                 pass
 
         return redirect('/')
-    return render(request, 'send_email.html')
+    else:
+        try:
+            user_id = request.user.id
+            responce = GameResult.objects.filter(id=user_id)
+            responce = responce[0]
+            if responce.score >= 5:
+                return render(request, 'send_email.html', context={"user": {"name": request.user.first_name
+                    , "surname": request.user.last_name}})
+        except BaseException as e:
+            return e
