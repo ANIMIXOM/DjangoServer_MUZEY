@@ -68,4 +68,4 @@ def send_email(request):
                 return render(request, 'send_email.html', context={"user": {"name": request.user.first_name
                     , "surname": request.user.last_name}})
         except BaseException as e:
-            return e
+            return e     
