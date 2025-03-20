@@ -35,3 +35,7 @@ jobs:
       - name: Deploy with Docker Compose
         run: |
           ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd ${{ env.SERVER_PATH }} && docker-compose down && docker-compose up -d --build"
+
+      - name: Run migrations
+        run: |
+          ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd ${{ env.SERVER_PATH }} && docker exec museum_app bash -c 'python manage.py migrate'"
