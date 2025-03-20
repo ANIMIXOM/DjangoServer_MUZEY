@@ -15,7 +15,7 @@ def send_email(request):
         recipient_email = request.POST.get('email')
         subject = 'Грамота.'
         message = "Поздравляем!!!"
-        from_email = os.getenv('EMAIL_FROM')
+        from_email = os.getenv('EMAIL_HOST_USER')
         name = request.POST.get('name')
         surname = request.POST.get('surname')
 
@@ -68,4 +68,4 @@ def send_email(request):
                 return render(request, 'send_email.html', context={"user": {"name": request.user.first_name
                     , "surname": request.user.last_name}})
         except BaseException as e:
-            return e     
+            return e

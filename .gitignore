@@ -10,3 +10,5 @@
 /.idea/
 /MuzeyServer/db.sqlite3
 /MuzeyServer/static/video/
+/MuzeyServer/logfile.log
+/MuzeyServer/.env

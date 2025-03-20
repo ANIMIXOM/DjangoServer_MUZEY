@@ -4,11 +4,11 @@ services:
   web:
     build:
       context: MuzeyServer
+    network_mode: "host"
     expose:
       - "8000"
-    ports:
-      - "8000:8000"
     container_name: museum_app
     restart: always
     volumes:
       - ./MuzeyServer/static:/app/static
+      - ./MuzeyServer/logfile.log:/app/logfile.log
