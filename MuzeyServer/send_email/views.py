@@ -15,7 +15,7 @@ def send_email(request):
         recipient_email = request.POST.get('email')
         subject = 'Грамота.'
         message = "Поздравляем!!!"
-        from_email = 'muzejkomsomolskojslavygludinov@gmail.com'
+        from_email = os.getenv('EMAIL_FROM')
         name = request.POST.get('name')
         surname = request.POST.get('surname')
 
