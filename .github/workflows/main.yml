@@ -38,4 +38,4 @@ jobs:
 
       - name: Run migrations
         run: |
-          ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd ${{ env.SERVER_PATH }} && docker-compose exec web python manage.py migrate"
+          ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd ${{ env.SERVER_PATH }} && docker-compose exec museum_app python manage.py migrate"
